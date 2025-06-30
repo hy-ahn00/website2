@@ -15,15 +15,15 @@
       <a href="#contact" class="text-blue-500 hover:underline">Contact</a>
     </nav>
   </header>  <section class="text-center py-20 bg-gradient-to-br from-blue-200 to-white">
-    <h2 class="text-4xl font-bold mb-4">복수가 필요하신가요?</h2>
-    <p class="text-lg mb-6">LawBridge에서 문제에 맞는 법률자를 만남기까지 도움을 드릴 것입니다.</p>
+    <h2 class="text-4xl font-bold mb-4">법적 도움이 필요하신가요?</h2>
+    <p class="text-lg mb-6">LawBridge는 여러분을 위한 맞춤 법률 자문 서비스를 제공합니다.</p>
     <a href="#chat" class="bg-blue-600 text-white px-6 py-3 rounded-2xl font-semibold">자문 시작</a>
   </section>  <section id="chat" class="py-16 px-6 max-w-4xl mx-auto">
-    <h3 class="text-3xl font-semibold mb-4 text-center">법률 범위 선택 & AI 채팅</h3><!-- Category Selection -->
+    <h3 class="text-3xl font-semibold mb-4 text-center">법률 카테고리 선택 & AI 채팅</h3><!-- Category Selection -->
 <div class="mb-6">
-  <label for="category" class="block mb-2 text-lg font-medium">법률 범위를 선택해주세요:</label>
+  <label for="category" class="block mb-2 text-lg font-medium">법률 카테고리를 선택해주세요:</label>
   <select id="category" class="w-full p-3 border rounded">
-    <option value="">— 범위 선택 —</option>
+    <option value="">— 카테고리 선택 —</option>
     <option value="의료법">의료법</option>
     <option value="특허법">특허법</option>
     <option value="노동법">노동법</option>
@@ -33,7 +33,7 @@
 
 <!-- Chatbot -->
 <div class="bg-white shadow rounded-lg p-6">
-  <h4 class="text-xl font-semibold mb-4">자본의 문의를 입력해 보세요</h4>
+  <h4 class="text-xl font-semibold mb-4">생각하신 예산안을 입력해 보세요</h4>
   <div id="chatlog" class="h-48 overflow-y-auto border p-4 rounded bg-gray-50 text-sm mb-4"></div>
   <div class="flex">
     <input id="userInput" type="text" placeholder="질문을 입력하세요..." class="flex-1 p-3 border rounded-l" />
@@ -72,7 +72,7 @@
       if (input.includes("노동")) {
         reply = "노동법은 근로계약, 해고, 임금 등에 관련된 법률입니다. 어떤 점이 궁금하신가요?";
       } else if (input.includes("의료")) {
-        reply = "의료법은 의료 사고, 진료 거부, 환자 권리 보호 등과 관련되어 있습니다.";
+        reply = "의료법은 의료 사고, 진료 거부, 환자 권리 보호 등과 관련되어 있습니다. 어떤 부분에서 도움이 필요하십니까?";
       } else if (input.includes("특허")) {
         reply = "특허법은 아이디어나 발명 보호와 관련된 법률입니다. 출원 절차에 대해 궁금하신가요?";
       }
