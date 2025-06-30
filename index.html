@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bilingual Website</title>
+  <style>
+    /* Hide both language sections by default */
+    .lang {
+      display: none;
+    }
+    /* Show the active language section */
+    .lang.active {
+      display: block;
+    }
+    /* Simple styling for the language buttons */
+    nav {
+      margin-bottom: 1rem;
+    }
+    button {
+      margin-right: 0.5rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <!-- Language toggle buttons -->
+    <button id="enBtn">English</button>
+    <button id="koBtn">한국어</button>
+  </nav>
+  
+  <div id="content">
+    <!-- English version -->
+    <section class="lang en active">
+      <h1>Welcome!</h1>
+      <p>This is the English version of our site.</p>
+      <!-- More English content here -->
+    </section>
+    
+    <!-- Korean version -->
+    <section class="lang ko">
+      <h1>환영합니다!</h1>
+      <p>이것은 우리 사이트의 한국어 버전입니다.</p>
+      <!-- More Korean content here -->
+    </section>
+  </div>
+  
+  <script>
+    // Get references to the buttons and language sections
+    const enBtn = document.getElementById('enBtn');
+    const koBtn = document.getElementById('koBtn');
+    const enSection = document.querySelector('.lang.en');
+    const koSection = document.querySelector('.lang.ko');
+
+    // Function to show the English section and hide the Korean section
+    enBtn.addEventListener('click', function() {
+      enSection.classList.add('active');
+      koSection.classList.remove('active');
+    });
+
+    // Function to show the Korean section and hide the English section
+    koBtn.addEventListener('click', function() {
+      koSection.classList.add('active');
+      enSection.classList.remove('active');
+    });
+  </script>
+</body>
+</html>
