@@ -1,69 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bilingual Website</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>법률 자문 웹사이트</title>
   <style>
-    /* Hide both language sections by default */
     .lang {
       display: none;
     }
-    /* Show the active language section */
     .lang.active {
       display: block;
     }
-    /* Simple styling for the language buttons */
     nav {
       margin-bottom: 1rem;
     }
     button {
       margin-right: 0.5rem;
       padding: 0.5rem 1rem;
-      cursor: pointer;
+      font-size: 1rem;
+    }
+    select {
+      font-size: 1rem;
+      padding: 0.3rem;
+      margin-top: 1rem;
+    }
+    .result {
+      margin-top: 1rem;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
   <nav>
-    <!-- Language toggle buttons -->
-    <button id="enBtn">English</button>
     <button id="koBtn">한국어</button>
+    <button id="enBtn">English</button>
   </nav>
-  
+
   <div id="content">
-    <!-- English version -->
-    <section class="lang en active">
-      <h1>Welcome!</h1>
-      <p>This is the English version of our site.</p>
-      <!-- More English content here -->
+    <!-- 한국어 섹션 -->
+    <section class="lang ko active">
+      <h1>법률 자문에 오신 것을 환영합니다</h1>
+      <p>원하는 법률 분야를 선택하세요:</p>
+      <select id="koCategory">
+        <option value="">-- 분야 선택 --</option>
+        <option value="의료법">의료법</option>
+        <option value="특허법">특허법</option>
+        <option value="노동법">노동법</option>
+      </select>
+      <div class="result" id="koResult"></div>
     </section>
-    
-    <!-- Korean version -->
-    <section class="lang ko">
-      <h1>환영합니다!</h1>
-      <p>이것은 우리 사이트의 한국어 버전입니다.</p>
-      <!-- More Korean content here -->
+
+    <!-- 영어 섹션 -->
+    <section class="lang en">
+      <h1>Welcome to Legal Consultation</h1>
+      <p>Please choose a legal category:</p>
+      <select id="enCategory">
+        <option value="">-- Select Category --</option>
+        <option value="Medical Law">Medical Law</option>
+        <option value="Patent Law">Patent Law</option>
+        <option value="Labor Law">Labor Law</option>
+      </select>
+      <div class="result" id="enResult"></div>
     </section>
   </div>
-  
+
   <script>
-    // Get references to the buttons and language sections
+    // 언어 전환
     const enBtn = document.getElementById('enBtn');
     const koBtn = document.getElementById('koBtn');
     const enSection = document.querySelector('.lang.en');
     const koSection = document.querySelector('.lang.ko');
 
-    // Function to show the English section and hide the Korean section
-    enBtn.addEventListener('click', function() {
+    enBtn.addEventListener('click', () => {
       enSection.classList.add('active');
       koSection.classList.remove('active');
     });
 
-    // Function to show the Korean section and hide the English section
-    koBtn.addEventListener('click', function() {
+    koBtn.addEventListener('click', () => {
       koSection.classList.add('active');
       enSection.classList.remove('active');
+    });
+
+    // 한국어 카테고리 선택
+    const koCategory = document.getElementById('koCategory');
+    const koResult = document.getElementById('koResult');
+    koCategory.addEventListener('change', () => {
+      const value = koCategory.value;
+      if (value) {
+        koResult.textContent = `선택하신 분야는 "${value}"입니다. 해당 분야에 맞는 변호사를 연결해 드릴게요.`;
+      } else {
+        koResult.textContent = '';
+      }
+    });
+
+    // 영어 카테고리 선택
+    const enCategory = document.getElementById('enCategory');
+    const enResult = document.getElementById('enResult');
+    enCategory.addEventListener('change', () => {
+      const value = enCategory.value;
+      if (value) {
+        enResult.textContent = `You selected "${value}". We’ll connect you with a suitable lawyer.`;
+      } else {
+        enResult.textContent = '';
+      }
     });
   </script>
 </body>
