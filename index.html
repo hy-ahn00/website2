@@ -1,109 +1,86 @@
-<!DOCTYPE html>
-<html lang="ko">
+<!DOCTYPE html><html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>법률 자문 웹사이트</title>
-  <style>
-    .lang {
-      display: none;
-    }
-    .lang.active {
-      display: block;
-    }
-    nav {
-      margin-bottom: 1rem;
-    }
-    button {
-      margin-right: 0.5rem;
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-    }
-    select {
-      font-size: 1rem;
-      padding: 0.3rem;
-      margin-top: 1rem;
-    }
-    .result {
-      margin-top: 1rem;
-      font-weight: bold;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LawBridge – Legal Advice & Lawyer Matching</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-  <nav>
-    <button id="koBtn">한국어</button>
-    <button id="enBtn">English</button>
-  </nav>
+<body class="bg-gray-100 text-gray-800">
+  <header class="bg-white shadow p-6 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-blue-600">LawBridge</h1>
+    <nav class="space-x-4">
+      <a href="#about" class="text-blue-500 hover:underline">About</a>
+      <a href="#services" class="text-blue-500 hover:underline">Services</a>
+      <a href="#lawyers" class="text-blue-500 hover:underline">For Lawyers</a>
+      <a href="#contact" class="text-blue-500 hover:underline">Contact</a>
+    </nav>
+  </header>  <section class="text-center py-20 bg-gradient-to-br from-blue-200 to-white">
+    <h2 class="text-4xl font-bold mb-4">복수가 필요하신가요?</h2>
+    <p class="text-lg mb-6">LawBridge에서 문제에 맞는 법률자를 만남기까지 도움을 드릴 것입니다.</p>
+    <a href="#chat" class="bg-blue-600 text-white px-6 py-3 rounded-2xl font-semibold">자문 시작</a>
+  </section>  <section id="chat" class="py-16 px-6 max-w-4xl mx-auto">
+    <h3 class="text-3xl font-semibold mb-4 text-center">법률 범위 선택 & AI 채팅</h3><!-- Category Selection -->
+<div class="mb-6">
+  <label for="category" class="block mb-2 text-lg font-medium">법률 범위를 선택해주세요:</label>
+  <select id="category" class="w-full p-3 border rounded">
+    <option value="">— 범위 선택 —</option>
+    <option value="의료법">의료법</option>
+    <option value="특허법">특허법</option>
+    <option value="노동법">노동법</option>
+  </select>
+  <div id="categoryResult" class="mt-4 font-semibold text-blue-600"></div>
+</div>
 
-  <div id="content">
-    <!-- 한국어 섹션 -->
-    <section class="lang ko active">
-      <h1>법률 자문에 오신 것을 환영합니다</h1>
-      <p>원하는 법률 분야를 선택하세요:</p>
-      <select id="koCategory">
-        <option value="">-- 분야 선택 --</option>
-        <option value="의료법">의료법</option>
-        <option value="특허법">특허법</option>
-        <option value="노동법">노동법</option>
-      </select>
-      <div class="result" id="koResult"></div>
-    </section>
-
-    <!-- 영어 섹션 -->
-    <section class="lang en">
-      <h1>Welcome to Legal Consultation</h1>
-      <p>Please choose a legal category:</p>
-      <select id="enCategory">
-        <option value="">-- Select Category --</option>
-        <option value="Medical Law">Medical Law</option>
-        <option value="Patent Law">Patent Law</option>
-        <option value="Labor Law">Labor Law</option>
-      </select>
-      <div class="result" id="enResult"></div>
-    </section>
+<!-- Chatbot -->
+<div class="bg-white shadow rounded-lg p-6">
+  <h4 class="text-xl font-semibold mb-4">자본의 문의를 입력해 보세요</h4>
+  <div id="chatlog" class="h-48 overflow-y-auto border p-4 rounded bg-gray-50 text-sm mb-4"></div>
+  <div class="flex">
+    <input id="userInput" type="text" placeholder="질문을 입력하세요..." class="flex-1 p-3 border rounded-l" />
+    <button id="sendBtn" class="bg-blue-600 text-white px-6 rounded-r">전송</button>
   </div>
+</div>
 
-  <script>
-    // 언어 전환
-    const enBtn = document.getElementById('enBtn');
-    const koBtn = document.getElementById('koBtn');
-    const enSection = document.querySelector('.lang.en');
-    const koSection = document.querySelector('.lang.ko');
-
-    enBtn.addEventListener('click', () => {
-      enSection.classList.add('active');
-      koSection.classList.remove('active');
-    });
-
-    koBtn.addEventListener('click', () => {
-      koSection.classList.add('active');
-      enSection.classList.remove('active');
-    });
-
-    // 한국어 카테고리 선택
-    const koCategory = document.getElementById('koCategory');
-    const koResult = document.getElementById('koResult');
-    koCategory.addEventListener('change', () => {
-      const value = koCategory.value;
+  </section>  <section id="contact" class="py-16 px-6 bg-white max-w-4xl mx-auto">
+    <h3 class="text-3xl font-semibold mb-4">Contact Us</h3>
+    <form class="grid grid-cols-1 gap-4">
+      <input type="text" placeholder="Your Name" class="border p-3 rounded" required />
+      <input type="email" placeholder="Your Email" class="border p-3 rounded" required />
+      <textarea placeholder="Your Message" class="border p-3 rounded" rows="4"></textarea>
+      <button class="bg-blue-600 text-white py-2 px-4 rounded">Send Message</button>
+    </form>
+  </section>  <footer class="text-center text-sm text-gray-500 py-6">
+    &copy; 2025 LawBridge. All rights reserved.
+  </footer>  <script>
+    // Category selection
+    document.getElementById('category').addEventListener('change', function() {
+      const value = this.value;
+      const result = document.getElementById('categoryResult');
       if (value) {
-        koResult.textContent = `선택하신 분야는 "${value}"입니다. 해당 분야에 맞는 변호사를 연결해 드릴게요.`;
+        result.textContent = `\uC120\uD0DD\uD55C \uBC94\uC704\uB294 \"${value}\" \uC785\uB2C8\uB2E4.`;
       } else {
-        koResult.textContent = '';
+        result.textContent = '';
       }
     });
 
-    // 영어 카테고리 선택
-    const enCategory = document.getElementById('enCategory');
-    const enResult = document.getElementById('enResult');
-    enCategory.addEventListener('change', () => {
-      const value = enCategory.value;
-      if (value) {
-        enResult.textContent = `You selected "${value}". We’ll connect you with a suitable lawyer.`;
-      } else {
-        enResult.textContent = '';
+    // Chatbot logic
+    document.getElementById('sendBtn').addEventListener('click', () => {
+      const input = document.getElementById('userInput').value.trim();
+      const log = document.getElementById('chatlog');
+      let reply = '죄송합니다. 해당 질문에 대한 답변을 찾을 수 없습니다.';
+
+      if (input.includes("노동")) {
+        reply = "노동법은 근로계약, 해고, 임금 등에 관련된 법률입니다. 어떤 점이 궁금하신가요?";
+      } else if (input.includes("의료")) {
+        reply = "의료법은 의료 사고, 진료 거부, 환자 권리 보호 등과 관련되어 있습니다.";
+      } else if (input.includes("특허")) {
+        reply = "특허법은 아이디어나 발명 보호와 관련된 법률입니다. 출원 절차에 대해 궁금하신가요?";
       }
+
+      log.innerHTML += `<p><strong>👤 사용자:</strong> ${input}</p>`;
+      log.innerHTML += `<p><strong>🤖 챗봇:</strong> ${reply}</p>`;
+      document.getElementById('userInput').value = '';
+      log.scrollTop = log.scrollHeight;
     });
-  </script>
-</body>
+  </script></body>
 </html>
